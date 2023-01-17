@@ -35,10 +35,18 @@ public class ChatUserServiceBean implements UserDetailsService, AuthenticationSe
     @Transactional
     public String signUp(ChatUser chatUser){
 
-        chatUserRepository.findChatUserByEmail(chatUser.getEmail())
+        chatUserRepository.findChatUserByEmailAndEnabled(chatUser.getEmail(), true)
                 .ifPresent(cu -> {
                     throw new EmailAlreadyTakenException("Email " + cu.getEmail() + " is already taken");
                 });
+/*
+Instead of findChatUserByEmailAndEnabled can be implemented simple validation
+with the following principles:
+if email is found and there is confirmed token -> email is already taken
+if email is found but there is not expired, not confirmed token -> show "Confirm Email Exception"
+if email is found but there is expired and not confirmed token -> generate new token without saving user
+*/
+
         String password = bCryptPasswordEncoder.encode(chatUser.getPassword());
         chatUser.setPassword(password);
         chatUserRepository.save(chatUser);

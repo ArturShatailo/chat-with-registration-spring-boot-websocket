@@ -27,6 +27,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(EmailSendFailException.class)
+    protected ResponseEntity<?> handleEmailSendFailException(EmailSendFailException ex, WebRequest request) {
+        ExceptionDetails errorDetails =
+                new ExceptionDetails(new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(ConfirmationTokenExpiredException.class)
     protected ResponseEntity<?> handleConfirmationTokenExpiredException(ConfirmationTokenExpiredException ex, WebRequest request) {
         ExceptionDetails errorDetails =
