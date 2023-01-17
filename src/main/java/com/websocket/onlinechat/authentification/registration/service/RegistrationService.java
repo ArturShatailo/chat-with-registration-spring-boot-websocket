@@ -4,7 +4,7 @@ import com.websocket.onlinechat.authentification.registration.domain.Registratio
 
 public interface RegistrationService {
 
-    String register(RegistrationRequest request);
+    void register(RegistrationRequest request);
 
     String confirmToken(String token);
 
