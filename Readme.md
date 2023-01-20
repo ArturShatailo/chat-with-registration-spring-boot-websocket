@@ -81,7 +81,7 @@ email registration confirmation. The frontend JavaScript part is also included (
     </li>
 <div style="padding: 5px 0"></div> <!--spacing 10px-->
     <li>
-        <p>REGISTRATION<b>http://localhost:8095/register</b></p>
+        <p>REGISTRATION <b>http://localhost:8095/register</b></p>
         <p>
             Registration form connected to Spring Security and Confirmation email sender
         </p>
@@ -89,7 +89,7 @@ email registration confirmation. The frontend JavaScript part is also included (
     </li>
 <div style="padding: 5px 0"></div> <!--spacing 10px-->
     <li>
-        <p>DASHBOARD<b>http://localhost:8095/dashboard</b></p>
+        <p>DASHBOARD <b>http://localhost:8095/dashboard</b></p>
         <p>
             Dashboard page with user interface.
         </p>
@@ -97,14 +97,14 @@ email registration confirmation. The frontend JavaScript part is also included (
     </li>
 <div style="padding: 5px 0"></div> <!--spacing 10px-->
     <li>
-        <p>PERSONAL INFORMATION<b>http://localhost:8095/dashboard</b></p>
+        <p>PERSONAL INFORMATION <b>http://localhost:8095/dashboard</b></p>
         <p>
             User information displayed from the fetch GET request to endpoint http://localhost:8095/api/user
         </p>
         <img src="./readme-img/nickname.png" alt="ChatMate personal information">
     </li>
 <div style="padding: 5px 0"></div> <!--spacing 10px-->
-    <p>CHATTING<b>http://localhost:8095/dashboard</b></p>
+    <p>CHATTING <b>http://localhost:8095/dashboard</b></p>
         <p>
             Chat messaging with SockJS requests to /chat endpoint. Messages are displayed according to the user information: 
             generated avatar, nickname, generated message body that includes inputted message text. 
