@@ -4,19 +4,22 @@ import com.websocket.onlinechat.authentification.registration.domain.Registratio
 import com.websocket.onlinechat.authentification.registration.service.RegistrationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @AllArgsConstructor
-@RequestMapping(path = "api/chat/user/registration")
+@RequestMapping(path = "api/registration", produces = MediaType.APPLICATION_JSON_VALUE)
 public class RegistrationController {
 
     private final RegistrationService registrationService;
 
-    @PostMapping("/")
+    @PostMapping(path = "/")
     @ResponseStatus(HttpStatus.CREATED)
-    public void register(@RequestBody RegistrationRequest request){
+    public String registration(/*@RequestBody */RegistrationRequest request){
         registrationService.register(request);
+        return "login";
     }
 
     @GetMapping(path = "/confirm")

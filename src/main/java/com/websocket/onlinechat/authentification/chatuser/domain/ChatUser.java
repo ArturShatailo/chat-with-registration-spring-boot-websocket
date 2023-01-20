@@ -22,9 +22,9 @@ public class ChatUser implements UserDetails {
     private Long id;
     private String firstname;
     private String lastname;
+    private String nickname;
     private String email;
     private String password;
-
     @Enumerated(EnumType.STRING)
     private ChatUserRole role;
     private Boolean locked = false;
@@ -37,6 +37,7 @@ public class ChatUser implements UserDetails {
                     ChatUserRole role) {
         this.firstname = firstname;
         this.lastname = lastname;
+        this.nickname = firstname + lastname;
         this.email = email;
         this.password = password;
         this.role = role;

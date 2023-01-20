@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class ChatUserServiceBean implements UserDetailsService, AuthenticationService {
+public class ChatUserServiceBean implements UserDetailsService, AuthenticationService, ChatUserInfoService, ChatUserUpdateService {
 
     private final static String USER_NOT_FOUND_MESSAGE = "User with username: %s not found";
 
@@ -30,6 +30,8 @@ public class ChatUserServiceBean implements UserDetailsService, AuthenticationSe
         return chatUserRepository.findChatUserByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format(USER_NOT_FOUND_MESSAGE, email)));
     }
+
+
 
     @Override
     @Transactional
@@ -55,5 +57,19 @@ if email is found but there is expired and not confirmed token -> generate new t
         confirmationTokenService.saveConfirmationToken(token);
 
         return token.getToken();
+    }
+
+    @Override
+    public ChatUser getUserInfo(String email) {
+        return chatUserRepository.findChatUserByEmailAndEnabled(email, true)
+                .orElseThrow(() -> new EmailAlreadyTakenException("Email " + email + " is not confirmed or unregistered"));
+    }
+
+    @Transactional
+    @Override
+    public void updateChatUserNickname(String email, String nickname) {
+        ChatUser chatUser = getUserInfo(email);
+        chatUser.setNickname(nickname);
+        chatUserRepository.save(chatUser);
     }
 }

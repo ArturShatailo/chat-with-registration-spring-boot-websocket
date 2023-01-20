@@ -22,15 +22,25 @@ public class WebSecurityConfig{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, AuthenticationManagerBuilder auth) throws Exception {
         http
-                .csrf().disable()
-                .authorizeHttpRequests()
-                .requestMatchers("/api/chat/user/registration/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and().formLogin();
-        auth
-                .authenticationProvider(daoAuthenticationProvider());
+//                    .cors().configurationSource(corsConfigurationSource())
+//                .and()
+                    .csrf().disable()
+                    .authorizeHttpRequests()
+                    .requestMatchers("/api/registration/**", "/register").permitAll()
+                    .requestMatchers("/js/**", "/css/**").permitAll()
+                    .anyRequest()
+                    .authenticated()
+                .and()
+                    .formLogin()
+                    .loginPage("/login").permitAll()
+                    //.failureForwardUrl("/login?error")
+                    .defaultSuccessUrl("/dashboard", true)
+                    //.successForwardUrl("/chat.html")
+                .and()
+                    .logout().permitAll();
+
+        auth.authenticationProvider(daoAuthenticationProvider());
+
         return http.build();
     }
 
@@ -42,6 +52,21 @@ public class WebSecurityConfig{
         return provider;
     }
 
+
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration configuration = new CorsConfiguration();
+//
+//        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:3000"));
+//        configuration.setAllowedHeaders(List.of("*"));
+//        configuration.setAllowedMethods(Arrays.asList("GET","POST", "OPTIONS"));
+//        configuration.setAllowCredentials(true);
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", configuration);
+//
+//        return source;
+//    }
 
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
