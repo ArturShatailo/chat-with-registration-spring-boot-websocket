@@ -18,5 +18,4 @@ public class ChatUserInfoDTO {
     public String email;
 
     public String role;
-
 }
