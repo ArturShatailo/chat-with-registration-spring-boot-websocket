@@ -1,0 +1,102 @@
+$primary: #abbaff;
+$secondary: #f5f6fa;
+$white: #fff;
+$black: #000;
+
+@mixin displayFlex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="submit"] {
+  -webkit-appearance: none !important;
+  border-radius: 0 !important;
+  border: 0;
+}
+
+.main {
+
+  @include displayFlex(column, center, center); height: /*60vh*/auto;
+
+  .fieldset{
+    @include displayFlex(column, space-around, center);
+    background-color: transparent;
+    box-shadow: $primary 0 0 10px;
+    width: 400px;
+    height: 400px;
+    padding: 20px 10px;
+    border: none;
+    border-radius: 15px;
+  }
+
+  form {
+    .form-button-label {
+      @include displayFlex(column, center, center);
+      margin: 15px;
+    }
+
+    .form-group {
+      position: relative;
+      padding: 15px 0 0;
+      width: 60%;
+    }
+
+    .form-field {
+      font-family: inherit;
+      width: 100%;
+      border: 0;
+      border-bottom: 2px solid $secondary;
+      outline: 0 !important;
+      font-size: 18px;
+      color: $white;
+      padding: 20px 0 10px;
+      background: transparent;
+      transition: 0.8s;
+
+      &::placeholder {
+        color: transparent;
+      }
+
+      &:placeholder-shown ~ .form-label {
+        font-size: 18px;
+        cursor: text;
+        top: 20px;
+      }
+
+    }
+
+    .form-label {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.8s;
+      font-size: 18px;
+      color: $secondary;
+    }
+
+    .form-field:focus {
+
+      padding-bottom: 5px;
+      font-weight: 500;
+      border-width: 3px;
+      border-color: $secondary; /*linear-gradient(to right, $primary, $secondary); border-image-slice: 1;*/
+
+      ~ .form-label {
+        position: absolute;
+        top: -5px;
+        display: block;
+        transition: 0.8s;
+        font-size: 18px;
+        color: $primary;
+        font-weight: 700;
+      }
+
+    }
+  }
+}
+

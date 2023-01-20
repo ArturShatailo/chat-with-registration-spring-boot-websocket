@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org" lang="en">
+<head>
+  <title tiles:fragment="title">Register</title>
+  <link type="text/css" rel="stylesheet" href="/css/default.css" />
+  <link type="text/css" rel="stylesheet" href="/css/forms.css" />
+</head>
+<body>
+
+<h1>Sign up</h1>
+
+<div class="main" tiles:fragment="content">
+  <form class="form register-form" name="f" th:action="@{/api/registration/}" method="post">
+    <fieldset class="fieldset" style="height: 500px;">
+      <!--<legend>Please Login</legend>-->
+      <div th:if="${param.error}" class="alert alert-error">
+        <p style="color: khaki">Invalid input data.</p>
+      </div> <!---->
+      <div th:if="${param.logout}" class="alert alert-success">
+        <p style="color: aquamarine">You have been logged out.</p>
+      </div> <!---->
+
+      <div class="form-group field">
+        <input type="text" class="form-field" placeholder="Name" name="firstname" id='firstname' required />
+        <label for="firstname" class="form-label">Name</label>
+      </div>
+
+      <div class="form-group field">
+        <input type="text" class="form-field" placeholder="Lastname" name="lastname" id='lastname' required />
+        <label for="lastname" class="form-label">Lastname</label>
+      </div>
+
+      <div class="form-group field">
+        <input type="email" class="form-field" placeholder="Email" name="email" id='email' required />
+        <label for="email" class="form-label">Email</label>
+      </div>
+
+      <div class="form-group field">
+        <input type="password" class="form-field" placeholder="Password" name="password" id='password' required />
+        <label for="password" class="form-label">Password</label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="button">Register</button>
+      </div>
+
+      <div class="form-link">
+        <a href="/login">Sign in instead</a>
+      </div>
+    </fieldset>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+textarea,
+input[type=text],
+input[type=button],
+input[type=submit] {
+  -webkit-appearance: none !important;
+  border-radius: 0 !important;
+  border: 0;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+.main .fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: transparent;
+  box-shadow: #abbaff 0 0 10px;
+  width: 400px;
+  height: 400px;
+  padding: 20px 10px;
+  border: none;
+  border-radius: 15px;
+}
+.main form .form-button-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+}
+.main form .form-group {
+  position: relative;
+  padding: 15px 0 0;
+  width: 60%;
+}
+.main form .form-field {
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #f5f6fa;
+  outline: 0 !important;
+  font-size: 18px;
+  color: #fff;
+  padding: 20px 0 10px;
+  background: transparent;
+  transition: 0.8s;
+}
+.main form .form-field::placeholder {
+  color: transparent;
+}
+.main form .form-field:placeholder-shown ~ .form-label {
+  font-size: 18px;
+  cursor: text;
+  top: 20px;
+}
+.main form .form-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.8s;
+  font-size: 18px;
+  color: #f5f6fa;
+}
+.main form .form-field:focus {
+  padding-bottom: 5px;
+  font-weight: 500;
+  border-width: 3px;
+  border-color: #f5f6fa; /*linear-gradient(to right, $primary, $secondary); border-image-slice: 1;*/
+}
+.main form .form-field:focus ~ .form-label {
+  position: absolute;
+  top: -5px;
+  display: block;
+  transition: 0.8s;
+  font-size: 18px;
+  color: #abbaff;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=forms.css.map */
