@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>ChatMate</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+    <link rel="stylesheet" href="/css/default.css" />
+    <link rel="stylesheet" href="/css/chat.css" />
+    <link rel="stylesheet" href="/css/style-scrollbar.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-16x16.png">
+</head>
+<body>
+<header>
+    <div class="header-tab logo-tab"><img src="/img/cm.png" alt="ChatMate logo" width="128"></div>
+    <div class="header-tab personal-info-tab">
+
+        <div class="info-container">
+            <p id="user-name-header"></p>
+            <p id="account-details-button" class="account-details-button link">Account details</p>
+            <a class="link" href="/logout">Log out</a>
+        </div>
+        <div class="avatar-container">
+            <div></div>
+        </div>
+
+        <div class="information-details-container hide">
+            <div><p class="user-info-text">Name: <span id="user-name"></span></p></div>
+            <div><p class="user-info-text">Email: <span id="user-email"></span></p></div>
+            <div><p class="user-info-text">Nickname: <span id="user-nickname"></span></p></div>
+            <form id="nickname-form" name="nickname-form">
+                <div class="form-input-group">
+                    <input id="nickname" type="text" class="form-control-cm all-input-cm" autocomplete="off" placeholder="Change nickname" />
+                    <div class="input-group-elem-append">
+                        <button class="fas fa-location-arrow fa-arrow-button" id="change-nickname-submit" type="submit"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
+
+<div class="chat-main-container">
+    <div class="chats-list-controls">
+        <form id="connect-form" class="form-contacts" name="connect-form">
+            <div class="form-input-group">
+                <div class="input-group-elem-append">
+                    <button class="button" id="startChatButton" type="submit">Start chatting</button>
+                </div>
+            </div>
+        </form>
+        <form id="disconnect-form" class="form-contacts" name="disconnect-form">
+            <div class="form-input-group">
+                <div class="input-group-elem-append">
+                    <button class="button" id="endChatButton" type="submit">End chatting</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="chat-page">
+                <div class="card-chat-window">
+                    <div class="chat-header">
+                        <div class="chat-summary">
+                            <p>Welcome to ChatMate</p>
+                        </div>
+                    </div>
+
+                    <div class="chat-body" id="chat-body">
+
+                        <div id="chat">
+
+                        </div>
+
+                    </div>
+
+                    <form id="message-controls" name="message-controls" class="card-footer">
+                        <div class="form-input-group">
+                            <textarea id="message" class="form-control-cm all-input-cm" placeholder="Type your message..."></textarea>
+                            <div class="input-group-elem-append">
+                                <button class="fas fa-location-arrow fa-arrow-button" type="submit"></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    </div>
+
+
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/dashboard-script.js"></script>
+
+</body>
+</html>
