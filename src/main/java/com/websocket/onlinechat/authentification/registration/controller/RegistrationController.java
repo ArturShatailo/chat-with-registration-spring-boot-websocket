@@ -22,6 +22,8 @@ public class RegistrationController {
         return "login";
     }
 
+    //response.sendRedirect("/personal-area");  HttpServletResponse response
+
     @GetMapping(path = "/confirm")
     public String confirm(@RequestParam("token") String token) {
         return registrationService.confirmToken(token);

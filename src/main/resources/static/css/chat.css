@@ -177,7 +177,7 @@ header .personal-info-tab .avatar-container {
   left: -34px;
   width: 30px;
   height: 30px;
-  background-image: url("../img/cm.png");
+  background-image: url("../img/public/cm.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -224,6 +224,18 @@ header .personal-info-tab .avatar-container {
   border: 0 !important;
   color: white !important;
   border-radius: 0 5px 5px 0 !important;
+  position: relative;
+}
+.fa-arrow-button:before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-image: url("../img/public/arrow.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 18px;
+  left: 18px;
 }
 
 .time_send {

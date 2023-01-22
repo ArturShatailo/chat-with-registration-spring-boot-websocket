@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:tiles="http://www.thymeleaf.org" lang="en">
+<html xmlns:tiles="http://www.thymeleaf.org" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title tiles:fragment="title">Login</title>
 
-    <link rel="stylesheet" href="/css/default.css" />
+    <link rel="stylesheet" th:href="@{/css/default.css}" />
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/img/public/favicon.ico}">
 </head>
 <body>
-<div tiles:fragment="content">
-    <h1 style="text-align: center">Thank you for the registration</h1>
-    <a href="/login">To login page</a>
+<div tiles:fragment="content" style="display: flex; flex-direction: column; align-items: center">
+    <img th:src="@{/img/public/cm.png}" width="359" alt="Chat mate logo">
+    <h1 style="text-align: center">Welcome to ChatMate</h1>
+    <a href="/login">TO LOGIN PAGE</a>
 </div>
 </body>
 </html>
