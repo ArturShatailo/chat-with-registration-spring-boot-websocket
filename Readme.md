@@ -29,7 +29,7 @@ email registration confirmation. The frontend JavaScript part is also included (
 <div style="padding: 10px 0"></div> <!--spacing 20px-->
 
 <h2 id="overview">Overview</h2>
-<p></p>
+<p>The application can be tested using the link to AWS: <a href="http://chat-mate.us-east-1.elasticbeanstalk.com/">ChatMate</a></p>
 
 <div style="padding: 10px 0"></div> <!--spacing 20px-->
 
