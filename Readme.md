@@ -29,6 +29,7 @@ email registration confirmation. The frontend JavaScript part is also included (
 <div style="padding: 10px 0"></div> <!--spacing 20px-->
 
 <h2 id="overview">Overview</h2>
+
 <p>This is a web chat application ChatMate that can be used to chatting with another connected users.</p>
 <p>The fist step any user should pass through is the authentication and authorisation process that is provided by Spring Security configuration. 
 Then, using post request, a new user record will be saved in database as well as a new registration token. This token is needed to confirm the emeil. 
