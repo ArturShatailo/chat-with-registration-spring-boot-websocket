@@ -34,6 +34,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(NicknameIsTheSameException.class)
+    protected ResponseEntity<?> handleNicknameIsTheSameException(NicknameIsTheSameException ex, WebRequest request) {
+        ExceptionDetails errorDetails =
+                new ExceptionDetails(new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(ConfirmationTokenExpiredException.class)
     protected ResponseEntity<?> handleConfirmationTokenExpiredException(ConfirmationTokenExpiredException ex, WebRequest request) {
         ExceptionDetails errorDetails =
