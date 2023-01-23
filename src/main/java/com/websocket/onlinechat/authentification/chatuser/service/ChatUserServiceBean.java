@@ -5,6 +5,7 @@ import com.websocket.onlinechat.authentification.chatuser.repository.ChatUserRep
 import com.websocket.onlinechat.authentification.registration.domain.ConfirmationToken;
 import com.websocket.onlinechat.authentification.registration.service.ConfirmationTokenService;
 import com.websocket.onlinechat.authentification.util.exceptions.EmailAlreadyTakenException;
+import com.websocket.onlinechat.authentification.util.exceptions.NicknameIsTheSameException;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -69,6 +70,10 @@ if email is found but there is expired and not confirmed token -> generate new t
     @Override
     public void updateChatUserNickname(String email, String nickname) {
         ChatUser chatUser = getUserInfo(email);
+
+        if(chatUser.getNickname().equals(nickname))
+            throw new NicknameIsTheSameException("You try to set the same nickname you have");
+
         chatUser.setNickname(nickname);
         chatUserRepository.save(chatUser);
     }

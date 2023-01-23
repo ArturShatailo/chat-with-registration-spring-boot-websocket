@@ -34,6 +34,7 @@ function fillUserInformation(){
 
 async function setUserNickname(event) {
     event.preventDefault()
+    let notification;
     const nickname = $('#nickname').val();
     const lastNickname = chatUser.nickname;
     chatUser.nickname = nickname;
@@ -52,10 +53,39 @@ async function setUserNickname(event) {
         $('.avatar-container').empty().append(createAvatarImage(chatUser.nickname));
         user = nickname;
         sendMessageChangeNickname(lastNickname)
-        return `OK`;
+
+        notification = createNotification("Nickname successfully changed", "success-notification")
+        //return `OK`;
     } else {
-        return `HTTP error: ${res.status}`;
+        notification = createNotification("Sorry, something went wrong " + res.message, "fail-notification")
+        //return `HTTP error: ${res.status}`;
     }
+
+    addNotification(notification);
+    //showMessage(message) { create object of received message, set timer when the object should be removed (.hide() method),
+        //add object to the DOM list }
+}
+
+function addNotification (notification) {
+
+    let notificationBlock = $("<div class='notification-block " + notification.status + "'></div>");
+    notificationBlock.text(notification.message);
+    $('#notificationsHub').append(notificationBlock)
+
+    setTimeout(function() {
+        notificationBlock.fadeOut( 1000, function() {
+            notificationBlock.remove();
+        });
+    }, 5000)
+
+}
+
+function createNotification(message, status){
+    return {
+        message: message,
+        status: status,
+        time: new Date().toUTCString()
+    };
 }
 
 function updateChatUser(data){
@@ -145,13 +175,9 @@ const onMessageReceived = (payload) => {
     const messageElement = document.createElement('div')
     messageElement.className = 'chat-message-container'
 
-    const nameElement = document.createElement('div')
-    nameElement.className = 'chat-message-container';
-    nameElement.textContent = message.from;
-
     messageCard.appendChild(flexBox)
     flexBox.appendChild(messageElement)
-    flexBox.appendChild(nameElement)
+    //flexBox.appendChild(nameElement)
 
     if (message.type === 'CONNECT') {
         messageElement.classList.add('event-message')
@@ -162,6 +188,12 @@ const onMessageReceived = (payload) => {
     } else if (message.type === 'CHANGE_NICKNAME') {
         messageElement.classList.add('event-message')
     } else {
+        const nameElement = document.createElement('div')
+        nameElement.className = 'chat-message-name-from';
+        nameElement.textContent = message.from;
+
+        messageElement.appendChild(nameElement)
+
         messageElement.classList.add('chat-message')
         messageElement.style['background-color'] = getAvatarColor(message.from)
 

@@ -58,6 +58,33 @@
   align-items: center;
 }
 
+#notificationsHub {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  height: auto;
+  flex-direction: column-reverse;
+  z-index: 300;
+}
+#notificationsHub .notification-block {
+  width: auto;
+  max-width: 35vw;
+  padding: 10px 20px;
+  text-align: right;
+  margin: 5px;
+  font-size: 18px;
+  color: black;
+}
+#notificationsHub .success-notification {
+  background-color: aquamarine;
+}
+#notificationsHub .fail-notification {
+  background-color: khaki;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -65,6 +92,7 @@ header {
   align-items: center;
   padding: 10px 5%;
   width: 100%;
+  position: relative;
 }
 header .personal-info-tab {
   display: flex;
@@ -102,6 +130,9 @@ header .personal-info-tab .info-container .account-details-button {
 header .personal-info-tab .avatar-container {
   padding: 0 20px;
 }
+header .logo-tab img {
+  width: 128px;
+}
 
 .chat-main-container {
   width: 100%;
@@ -116,7 +147,7 @@ header .personal-info-tab .avatar-container {
   height: 70vh;
 }
 .chat-main-container .chats-list-controls {
-  width: 20vw;
+  width: 20%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -131,9 +162,10 @@ header .personal-info-tab .avatar-container {
   margin: 5px 0;
 }
 .chat-main-container #chat-page {
-  width: 70%;
-  margin-left: 15px;
+  width: 80%;
+  margin: 0 0 0 15px;
   height: 100%;
+  max-height: 70vh;
 }
 .chat-main-container #chat-page .card-chat-window {
   position: relative;
@@ -207,6 +239,7 @@ header .personal-info-tab .avatar-container {
   margin-bottom: 1.5rem;
   display: flex;
   justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .chat-message-container {
@@ -219,12 +252,22 @@ header .personal-info-tab .avatar-container {
   color: white;
 }
 
+.chat-message-name-from {
+  margin: 0 0 5px 0;
+  font-weight: 600;
+}
+
+.chat-message {
+  line-break: anywhere;
+}
+
 .fa-arrow-button {
   background-color: rgba(0, 0, 0, 0.3) !important;
   border: 0 !important;
   color: white !important;
   border-radius: 0 5px 5px 0 !important;
   position: relative;
+  cursor: pointer;
 }
 .fa-arrow-button:before {
   content: "";
@@ -234,8 +277,15 @@ header .personal-info-tab .avatar-container {
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  top: 18px;
+  top: 20px;
   left: 18px;
+  transition: 0.2s;
+}
+.fa-arrow-button:hover::before {
+  transform: scale(1.2);
+}
+.fa-arrow-button:focus::before {
+  transform: scale(0.9);
 }
 
 .time_send {
@@ -291,6 +341,140 @@ header .personal-info-tab .avatar-container {
 .input-group-elem-append, .input-group-elem-prepend {
   display: -ms-flexbox;
   display: flex;
+}
+
+@media only screen and (min-width: 920px) {
+  header .logo-tab img {
+    width: 128px;
+  }
+  .img_cont_ava {
+    width: 80px;
+    height: 80px;
+  }
+  .img_cont_ava .rectangle {
+    width: 80px;
+    height: 80px;
+    font-size: 2.3em;
+  }
+  .info-container #user-name-header {
+    font-size: 20px;
+  }
+  .chat-main-container {
+    flex-direction: row;
+    height: 70vh;
+    align-items: flex-start;
+  }
+  .chat-main-container .chats-list-controls {
+    height: 100%;
+    width: 20%;
+    margin-right: 15px;
+  }
+  .chat-main-container #chat-page {
+    margin: 0 0 0 15px;
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 600px) and (max-width: 919px) {
+  #notificationsHub .notification-block {
+    max-width: 35vw;
+  }
+  header .logo-tab img {
+    width: 128px;
+  }
+  .img_cont_ava {
+    width: 80px;
+    height: 80px;
+  }
+  .img_cont_ava .rectangle {
+    width: 80px;
+    height: 80px;
+    font-size: 2.3em;
+  }
+  .info-container #user-name-header {
+    font-size: 20px;
+  }
+  .chat-main-container {
+    flex-direction: column-reverse;
+    height: 85vh;
+    align-items: center;
+  }
+  .chat-main-container .chats-list-controls {
+    height: auto;
+    width: 100%;
+    margin-right: 0;
+  }
+  .chat-main-container #chat-page {
+    margin: 20px 0;
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 599px) {
+  #notificationsHub .notification-block {
+    max-width: 90vw;
+  }
+  header .logo-tab img {
+    width: 80px;
+  }
+  .img_cont_ava {
+    width: 70px;
+    height: 70px;
+  }
+  .img_cont_ava .rectangle {
+    width: 70px;
+    height: 70px;
+    font-size: 2em;
+  }
+  .info-container #user-name-header {
+    font-size: 19px;
+  }
+  .chat-main-container {
+    flex-direction: column-reverse;
+    height: 85vh;
+    align-items: center;
+  }
+  .chat-main-container .chats-list-controls {
+    height: auto;
+    width: 100%;
+    margin-right: 0;
+  }
+  .chat-main-container #chat-page {
+    margin: 20px 0;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 480px) {
+  #notificationsHub .notification-block {
+    max-width: 90vw;
+  }
+  header .logo-tab img {
+    width: 64px;
+  }
+  .img_cont_ava {
+    width: 60px;
+    height: 60px;
+  }
+  .img_cont_ava .rectangle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8em;
+  }
+  .info-container #user-name-header {
+    font-size: 18px;
+  }
+  .chat-main-container {
+    flex-direction: column-reverse;
+    height: 85vh;
+    align-items: center;
+  }
+  .chat-main-container .chats-list-controls {
+    height: auto;
+    width: 100%;
+    margin-right: 0;
+  }
+  .chat-main-container #chat-page {
+    margin: 20px 0;
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=chat.css.map */

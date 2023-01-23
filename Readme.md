@@ -29,6 +29,18 @@ email registration confirmation. The frontend JavaScript part is also included (
 <div style="padding: 10px 0"></div> <!--spacing 20px-->
 
 <h2 id="overview">Overview</h2>
+
+<p>This is a web chat application ChatMate that can be used to chatting with another connected users.</p>
+<p>The fist step any user should pass through is the authentication and authorisation process that is provided by Spring Security configuration. 
+Then, using post request, a new user record will be saved in database as well as a new registration token. This token is needed to confirm the emeil. 
+An email message will be sent to user's specified email address and a 15 minutes period token will be included in the inner mail link, so user should 
+just click on it and email address will be confirmed according to the token. Registration process is completed. </br>
+Now, user can use the username (email) and password to sign in the system and get access to the secured page of chat.</br>
+Dashboard page (chat page) includes personal information of the user received by fetch request to backend api with get request. The legged in user is abel 
+to change its nickname at any time. Also, on the dashboard page the chat window is displayed and can be used to connect, disconnect and message sending/receiving. 
+Each new connected user will be displayed in the chat window, also, the event message will be sent when any user is disconnecting. 
+When user disconnects from the chat, messages from another user will not be received anymore. 
+Message sending process is provided by SockJS with STOMP (simple text oriented message protocol) and backend configured WebSocketMessageBroker.</p>
 <p>The application can be tested using the link to AWS: <a href="http://chat-mate.us-east-1.elasticbeanstalk.com/">ChatMate</a></p>
 
 <div style="padding: 10px 0"></div> <!--spacing 20px-->
@@ -61,6 +73,9 @@ email registration confirmation. The frontend JavaScript part is also included (
     </li>
     <li>
         <p>Maven</p>
+    </li>
+    <li>
+        <p>Deployed to AWS</p>
     </li>
     <!--<li>
         <p>JUnit and Mockito</p>
