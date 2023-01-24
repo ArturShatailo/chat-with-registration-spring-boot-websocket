@@ -275,6 +275,7 @@ disconnectForm.addEventListener('submit', disconnect, true)
 const messageControls = document.querySelector('#message-controls')
 messageControls.addEventListener('submit', sendMessage, true)
 
+
 // $('#chat').bind('DOMNodeInserted', function() {
 //     console.log( $( this ).width() );
 // });
