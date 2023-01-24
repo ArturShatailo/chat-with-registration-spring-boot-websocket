@@ -26,7 +26,7 @@ public class WebSecurityConfig{
 //                .and()
                     .csrf().disable()
                     .authorizeHttpRequests()
-                    .requestMatchers("/api/registration/**", "/register").permitAll()
+                    .requestMatchers("/api/registration/**", "/register", "/").permitAll()
                     .requestMatchers("/js/**", "/css/**", "/img/public/**").permitAll()
                     .anyRequest()
                     .authenticated()
