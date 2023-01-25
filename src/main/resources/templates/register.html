@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org" lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <title tiles:fragment="title">Register</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link type="text/css" rel="stylesheet" th:href="@{/css/default.css}" />
@@ -16,7 +17,7 @@
 
 <div class="main" tiles:fragment="content">
   <form id="registration-form" class="form register-form" name="registration-form" th:action="@{/api/registration/}"> <!--th: method="post"-->
-    <fieldset class="fieldset" style="height: 500px;">
+    <fieldset class="fieldset registration-fieldset">
       <!--<legend>Please Login</legend>-->
       <div th:if="${param.error}" class="alert alert-error">
         <p style="color: khaki">Invalid input data.</p>

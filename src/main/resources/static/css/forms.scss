@@ -23,21 +23,25 @@ input[type="submit"] {
 
   @include displayFlex(column, center, center); height: /*60vh*/auto;
 
-  .fieldset{
-    @include displayFlex(column, space-around, center);
-    background-color: transparent;
-    box-shadow: $primary 0 0 10px;
-    width: 400px;
-    height: 400px;
-    padding: 20px 10px;
-    border: none;
-    border-radius: 15px;
-  }
-
   form {
-    .form-button-label {
-      @include displayFlex(column, center, center);
-      margin: 15px;
+
+    .registration-fieldset{
+      width: 400px;
+      height: 550px;
+    }
+
+    .login-fieldset{
+      width: 400px;
+      height: 400px;
+    }
+
+    .fieldset{
+      @include displayFlex(column, space-around, center);
+      background-color: transparent;
+      box-shadow: $primary 0 0 10px;
+      padding: 20px 10px;
+      border: none;
+      border-radius: 15px;
     }
 
     .form-group {
@@ -100,3 +104,78 @@ input[type="submit"] {
   }
 }
 
+@media only screen and (min-width: 300px) {
+  .main {
+    form {
+      .registration-fieldset{
+        height: 75vh;
+        width: 80vw;
+      }
+    }
+  }
+
+  .main {
+    form {
+      .login-fieldset{
+        height: 40vh;
+        width: 70vw;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 480px) {
+  .main {
+    form {
+      .registration-fieldset{
+        height: 70vh;
+        width: 70vw;
+      }
+    }
+  }
+
+  .main {
+    form {
+      .login-fieldset{
+        height: 50vh;
+        width: 60vw;
+      }
+    }
+  }
+
+}
+
+
+@media only screen and (min-width: 600px)  {
+
+  .main form {
+    .registration-fieldset{
+      height: 800px;
+      width: 600px;
+    }
+  }
+
+  .main form {
+    .login-fieldset{
+      height: 500px;
+      width: 500px;
+    }
+  }
+}
+
+@media only screen and (min-width: 920px){
+  .main form{
+    .registration-fieldset{
+      height: 550px;
+      width: 400px;
+    }
+  }
+
+  .main form {
+    .login-fieldset{
+      height: 400px;
+      width: 400px;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org" lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title tiles:fragment="title">Login</title>
     <link type="text/css" rel="stylesheet" th:href="@{/css/default.css}"/>
     <link type="text/css" rel="stylesheet" th:href="@{/css/forms.css}"/>
@@ -12,7 +13,7 @@
 
 <div class="main" tiles:fragment="content">
     <form class="form login-form" name="f" th:action="@{/login}" method="post">
-        <fieldset class="fieldset">
+        <fieldset class="fieldset login-fieldset">
             <!--<legend>Please Login</legend>-->
             <div th:if="${param.error}" class="alert alert-error">
                 <p style="color: khaki">Invalid username and password</p>
