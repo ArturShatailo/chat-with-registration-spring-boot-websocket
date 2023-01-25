@@ -1,0 +1,16 @@
+#notificationsHub{
+  position: fixed; bottom: 10px; right: 10px; display: flex; align-items: flex-end; justify-content: flex-end;
+  height: auto; flex-direction: column-reverse; z-index: 300;
+
+  .notification-block{
+    width: auto; max-width: 35vw; padding: 10px 20px; text-align: right; margin: 5px; font-size: 18px; color: black;
+  }
+
+  .success-notification{
+    background-color: aquamarine;
+  }
+
+  .fail-notification{
+    background-color: khaki;
+  }
+}
