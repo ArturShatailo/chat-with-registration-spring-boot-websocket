@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/default.css" />
     <link rel="stylesheet" href="/css/chat.css" />
     <link rel="stylesheet" href="/css/style-scrollbar.css" />
+    <link type="text/css" rel="stylesheet" href="/css/notifications.css" />
     <link rel="icon" type="image/png" sizes="32x32" href="/img/public/favicon.ico">
 </head>
 <body>
@@ -33,7 +34,7 @@
             <div><p class="user-info-text">Name: <span id="user-name"></span></p></div>
             <div><p class="user-info-text">Email: <span id="user-email"></span></p></div>
             <div><p class="user-info-text">Nickname: <span id="user-nickname"></span></p></div>
-            <form id="nickname-form" name="nickname-form">
+            <form id="nickname-form" name="nickname-form" action="/api/user/">
                 <div class="form-input-group">
                     <input id="nickname" type="text" class="form-control-cm all-input-cm" autocomplete="off" placeholder="Change nickname" />
                     <div class="input-group-elem-append">
@@ -96,6 +97,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/notifications-script.js"></script>
 <script src="/js/dashboard-script.js"></script>
 
 </body>

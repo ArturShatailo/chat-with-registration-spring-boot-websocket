@@ -4,7 +4,7 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/chat_registration
-    username: postgres #postgres
+    username: postgres
     password: Postgresql
   # JPA properties
   jpa:
@@ -18,4 +18,6 @@ spring:
 
   # Server configuration
 server:
+  error:
+    include-message: always
   port: 8095  #set your port

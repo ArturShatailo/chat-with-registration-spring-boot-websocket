@@ -2,16 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org" lang="en">
 <head>
   <title tiles:fragment="title">Register</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link type="text/css" rel="stylesheet" th:href="@{/css/default.css}" />
   <link type="text/css" rel="stylesheet" th:href="@{/css/forms.css}" />
+  <link type="text/css" rel="stylesheet" th:href="@{/css/notifications.css}" />
   <link rel="icon" type="image/png" sizes="32x32" th:href="@{/img/public/favicon.ico}">
 </head>
 <body>
 
+<div id="notificationsHub"></div>
+
 <h1>Sign up</h1>
 
 <div class="main" tiles:fragment="content">
-  <form class="form register-form" name="f" th:action="@{/api/registration/}" method="post">
+  <form id="registration-form" class="form register-form" name="registration-form" th:action="@{/api/registration/}"> <!--th: method="post"-->
     <fieldset class="fieldset" style="height: 500px;">
       <!--<legend>Please Login</legend>-->
       <div th:if="${param.error}" class="alert alert-error">
@@ -41,6 +45,11 @@
         <label for="password" class="form-label">Password</label>
       </div>
 
+      <div class="form-group field">
+        <input type="password" class="form-field" placeholder="Confirm password" name="confirm-password" id='confirm-password' required />
+        <label for="confirm-password" class="form-label">Confirm password</label>
+      </div>
+
       <div class="form-actions">
         <button type="submit" class="button">Register</button>
       </div>
@@ -51,5 +60,8 @@
     </fieldset>
   </form>
 </div>
+
+<script src="/js/notifications-script.js"></script>
+<script src="/js/register-script.js"></script>
 </body>
 </html>

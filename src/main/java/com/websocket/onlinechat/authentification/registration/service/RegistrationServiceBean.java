@@ -20,6 +20,7 @@ public class RegistrationServiceBean implements RegistrationService{
 
     @Override
     public void register(RegistrationRequest request) {
+
         //VALIDATION
         String token = authenticationService.signUp(
                 new ChatUser(
@@ -40,6 +41,4 @@ public class RegistrationServiceBean implements RegistrationService{
     public String confirmToken(String token) {
         return confirmationTokenService.confirm(token);
     }
-
-
 }

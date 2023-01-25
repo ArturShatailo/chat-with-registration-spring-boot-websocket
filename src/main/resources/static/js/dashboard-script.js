@@ -1,7 +1,5 @@
 'use strict'
 
-//import axios from "axios";
-
 let stompClient
 let chatUser
 let user
@@ -9,7 +7,7 @@ let isActive = true;
 let connection;
 
 async function GetUserInfo() {
-    let url = 'http://localhost:8095/api/user/';
+    let url = '/api/user/';
     let res = await fetch(url, {method: 'GET'});
 
     if (res.ok) {
@@ -32,60 +30,48 @@ function fillUserInformation(){
     $('.avatar-container').empty().append(createAvatarImage(chatUser.nickname));
 }
 
-async function setUserNickname(event) {
-    event.preventDefault()
+async function handleSetUserNickname(event) {
+
+    event.preventDefault();
+    let prevNickname = chatUser.nickname;
+    let nickname = $('#nickname').val();
+    let form = event.currentTarget;
+    let url = form.action;
+
+    await doChangeNicknameRequest(url, prevNickname, nickname);
+
+}
+
+async function doChangeNicknameRequest(url, prevNickname, nickname){
     let notification;
-    const nickname = $('#nickname').val();
-    const lastNickname = chatUser.nickname;
     chatUser.nickname = nickname;
 
-    let url = 'http://localhost:8095/api/user/';
-    let res = await fetch(url, {
-        method: 'PUT',
+    let fetchOptions = {
+        method: "PUT",
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
+            Accept: "application/json",
         },
         body: JSON.stringify(chatUser),
-    });
+    };
+
+    let res = await fetch(url, fetchOptions);
 
     if (res.ok) {
         $('#user-nickname').html(nickname);
         $('.avatar-container').empty().append(createAvatarImage(chatUser.nickname));
         user = nickname;
-        sendMessageChangeNickname(lastNickname)
+        sendMessageChangeNickname(prevNickname)
 
         notification = createNotification("Nickname successfully changed", "success-notification")
-        //return `OK`;
+        addNotification(notification);
     } else {
-        notification = createNotification("Sorry, something went wrong " + res.message, "fail-notification")
-        //return `HTTP error: ${res.status}`;
+        let response = res.json()
+        response.then((data) => {
+            notification = createNotification(data.message, "fail-notification")
+            addNotification(notification);
+        })
     }
-
-    addNotification(notification);
-    //showMessage(message) { create object of received message, set timer when the object should be removed (.hide() method),
-        //add object to the DOM list }
-}
-
-function addNotification (notification) {
-
-    let notificationBlock = $("<div class='notification-block " + notification.status + "'></div>");
-    notificationBlock.text(notification.message);
-    $('#notificationsHub').append(notificationBlock)
-
-    setTimeout(function() {
-        notificationBlock.fadeOut( 1000, function() {
-            notificationBlock.remove();
-        });
-    }, 5000)
-
-}
-
-function createNotification(message, status){
-    return {
-        message: message,
-        status: status,
-        time: new Date().toUTCString()
-    };
 }
 
 function updateChatUser(data){
@@ -260,8 +246,8 @@ const getAvatarColor = (messageSender) => {
     return colours[index]
 }
 
-const changeNicknameButton = document.querySelector('#change-nickname-submit')
-changeNicknameButton.addEventListener('click', setUserNickname, true)
+const changeNicknameButton = document.querySelector('#nickname-form')
+changeNicknameButton.addEventListener('submit', handleSetUserNickname, true)
 
 const showInfoDetailsButton = document.querySelector('#account-details-button')
 showInfoDetailsButton.addEventListener('click', showInfoDetails, true)

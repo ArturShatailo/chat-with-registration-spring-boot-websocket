@@ -72,7 +72,7 @@ if email is found but there is expired and not confirmed token -> generate new t
         ChatUser chatUser = getUserInfo(email);
 
         if(chatUser.getNickname().equals(nickname))
-            throw new NicknameIsTheSameException("You try to set the same nickname you have");
+            throw new NicknameIsTheSameException("You're trying to set the same nickname you have");
 
         chatUser.setNickname(nickname);
         chatUserRepository.save(chatUser);
