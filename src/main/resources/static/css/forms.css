@@ -14,30 +14,44 @@ input[type=submit] {
   align-items: center;
   height: auto;
 }
-.main .fieldset {
+.main form .registration-fieldset {
+  width: 550px;
+  height: 550px;
+}
+.main form .login-fieldset {
+  width: 400px;
+  height: 400px;
+}
+.main form .fieldset {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   background-color: transparent;
   box-shadow: #abbaff 0 0 10px;
-  width: 400px;
-  height: 400px;
   padding: 20px 10px;
   border: none;
   border-radius: 15px;
 }
-.main form .form-button-label {
+.main form .form-row {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 15px;
+  width: 100%;
+}
+.main form .form-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
 .main form .form-group {
   position: relative;
   padding: 15px 0 0;
-  width: 60%;
+  width: 80%;
+  margin: 10% 0 10%;
 }
 .main form .form-field {
   font-family: inherit;
@@ -58,6 +72,9 @@ input[type=submit] {
   font-size: 18px;
   cursor: text;
   top: 20px;
+}
+.main form .redBorderFieldError {
+  border-bottom-color: rgb(224, 47, 47);
 }
 .main form .form-label {
   position: absolute;
@@ -81,6 +98,93 @@ input[type=submit] {
   font-size: 18px;
   color: #abbaff;
   font-weight: 700;
+}
+
+@media only screen and (min-width: 200px) {
+  .main form .form-row {
+    flex-direction: column;
+  }
+  .main form .form-group {
+    margin: 0 0 1%;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  .main form .registration-fieldset {
+    height: 85vh;
+    width: 90vw;
+  }
+  .main form .login-fieldset {
+    height: 50vh;
+    width: 90vw;
+  }
+}
+@media only screen and (min-width: 300px) {
+  .main form .form-row {
+    flex-direction: column;
+  }
+  .main form .form-group {
+    margin: 2% 0 1%;
+  }
+  h1 {
+    font-size: 40px;
+  }
+  .main form .registration-fieldset {
+    height: 630px;
+    width: 80vw;
+  }
+  .main form .login-fieldset {
+    height: 50vh;
+    width: 85vw;
+  }
+}
+@media only screen and (min-width: 480px) {
+  .main form .form-row {
+    flex-direction: row;
+  }
+  .main form .registration-fieldset {
+    height: 65vh;
+    width: 85vw;
+  }
+  .main form .login-fieldset {
+    height: 50vh;
+    width: 60vw;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .main form .form-row {
+    flex-direction: column;
+  }
+  .main form .registration-fieldset {
+    height: 800px;
+    width: 600px;
+  }
+  .main form .login-fieldset {
+    height: 500px;
+    width: 500px;
+  }
+}
+@media only screen and (min-width: 920px) {
+  h1 {
+    font-size: 60px;
+  }
+  .main form .form-row {
+    flex-direction: row;
+  }
+  .main form .form-group {
+    margin: 10% 0 10%;
+  }
+  .main form .registration-fieldset {
+    height: 70vh;
+    width: 550px;
+  }
+  .main form .login-fieldset {
+    height: 400px;
+    width: 400px;
+  }
+  .main form .login-fieldset .form-group {
+    margin: 0 0 0;
+  }
 }
 
 /*# sourceMappingURL=forms.css.map */

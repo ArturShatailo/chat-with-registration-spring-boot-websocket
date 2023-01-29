@@ -32,12 +32,13 @@ public class ChatUser implements UserDetails {
 
     public ChatUser(String firstname,
                     String lastname,
+                    String nickname,
                     String email,
                     String password,
                     ChatUserRole role) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.nickname = firstname + lastname;
+        this.nickname = nickname;
         this.email = email;
         this.password = password;
         this.role = role;

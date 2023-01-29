@@ -6,4 +6,6 @@ public interface ChatUserInfoService {
 
     ChatUser getUserInfo(String email);
 
+    ChatUser findChatUserByNickname(String nickname);
+
 }

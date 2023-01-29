@@ -6,6 +6,30 @@ let user
 let isActive = true;
 let connection;
 
+let menuToggler = true;
+
+$(".button-show-hide").click(function (){
+
+    if (menuToggler) {
+        $(this).html("&#128314;");
+        $(".chats-list-controls").css({maxHeight: 0+"px", height: 0 + "px", padding: "25px 10px"})
+        //.children('.contact-connections-container').hide(1000);*/
+        menuToggler = false;
+    } else {
+        $(this).html("&#10060;");
+        $(".chats-list-controls").css({maxHeight: 160+"px", height: 160 + "px", padding: "10px 10px"})
+/*
+        $(".chats-list-controls")
+            .animate({
+                maxHeight: 160,
+                height: 160,
+                //padding: "10px 10px"
+            }, 300)
+            //.children('.contact-connections-container').show(1000);*/
+        menuToggler = true;
+    }
+});
+
 async function GetUserInfo() {
     let url = '/api/user/';
     let res = await fetch(url, {method: 'GET'});
@@ -260,7 +284,6 @@ disconnectForm.addEventListener('submit', disconnect, true)
 
 const messageControls = document.querySelector('#message-controls')
 messageControls.addEventListener('submit', sendMessage, true)
-
 
 // $('#chat').bind('DOMNodeInserted', function() {
 //     console.log( $( this ).width() );

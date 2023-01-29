@@ -5,6 +5,7 @@ import com.websocket.onlinechat.authentification.chatuser.domain.ChatUserRole;
 import com.websocket.onlinechat.authentification.chatuser.service.AuthenticationService;
 import com.websocket.onlinechat.authentification.email.EmailSender;
 import com.websocket.onlinechat.authentification.registration.domain.RegistrationRequest;
+import com.websocket.onlinechat.authentification.registration.service.validation.RegistrationValidationService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,14 +19,18 @@ public class RegistrationServiceBean implements RegistrationService{
 
     private final EmailSender emailSender;
 
+    private final RegistrationValidationService registrationValidation;
+
     @Override
     public void register(RegistrationRequest request) {
 
-        //VALIDATION
+        registrationValidation.validate(request);
+
         String token = authenticationService.signUp(
                 new ChatUser(
                         request.getFirstname(),
                         request.getLastname(),
+                        request.getNickname(),
                         request.getEmail(),
                         request.getPassword(),
                         ChatUserRole.USER

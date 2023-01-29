@@ -23,27 +23,40 @@ input[type="submit"] {
 
   @include displayFlex(column, center, center); height: /*60vh*/auto;
 
-  .fieldset{
-    @include displayFlex(column, space-around, center);
-    background-color: transparent;
-    box-shadow: $primary 0 0 10px;
-    width: 400px;
-    height: 400px;
-    padding: 20px 10px;
-    border: none;
-    border-radius: 15px;
-  }
-
   form {
-    .form-button-label {
-      @include displayFlex(column, center, center);
-      margin: 15px;
+
+    .registration-fieldset{
+      width: 550px;
+      height: 550px;
+    }
+
+    .login-fieldset{
+      width: 400px;
+      height: 400px;
+    }
+
+    .fieldset{
+      @include displayFlex(column, space-around, center);
+      background-color: transparent;
+      box-shadow: $primary 0 0 10px;
+      padding: 20px 10px;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .form-row{
+      @include displayFlex(row, center, center); width: 100%;
+    }
+
+    .form-column{
+      @include displayFlex(column, space-around, center); width: 100%;
     }
 
     .form-group {
       position: relative;
       padding: 15px 0 0;
-      width: 60%;
+      width: 80%;
+      margin: 10% 0 10%;
     }
 
     .form-field {
@@ -68,6 +81,10 @@ input[type="submit"] {
         top: 20px;
       }
 
+    }
+
+    .redBorderFieldError{
+      border-bottom-color: rgb(224, 47, 47);
     }
 
     .form-label {
@@ -100,3 +117,150 @@ input[type="submit"] {
   }
 }
 
+@media only screen and (min-width: 200px) {
+
+  .main form .form-row {
+    flex-direction: column;
+  }
+
+  .main form .form-group {
+    margin: 0 0 1%;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .main {
+    form {
+      .registration-fieldset{
+        height: 85vh;
+        width: 90vw;
+      }
+    }
+  }
+
+  .main {
+    form {
+      .login-fieldset{
+        height: 50vh;
+        width: 90vw;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 300px) {
+
+  .main form .form-row {
+    flex-direction: column;
+  }
+
+  .main form .form-group {
+    margin: 2% 0 1%;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .main {
+    form {
+      .registration-fieldset{
+        height: 630px;
+        width: 80vw;
+      }
+    }
+  }
+
+  .main {
+    form {
+      .login-fieldset{
+        height: 50vh;
+        width: 85vw;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: 480px) {
+
+  .main form .form-row {
+    flex-direction: row;
+  }
+
+  .main {
+    form {
+      .registration-fieldset{
+        height: 65vh;
+        width: 85vw;
+      }
+    }
+  }
+
+  .main {
+    form {
+      .login-fieldset{
+        height: 50vh;
+        width: 60vw;
+      }
+    }
+  }
+
+}
+
+
+@media only screen and (min-width: 600px)  {
+
+  .main form .form-row {
+    flex-direction: column;
+  }
+
+  .main form {
+    .registration-fieldset{
+      height: 800px;
+      width: 600px;
+    }
+  }
+
+  .main form {
+    .login-fieldset{
+      height: 500px;
+      width: 500px;
+    }
+  }
+}
+
+@media only screen and (min-width: 920px){
+
+  h1 {
+    font-size: 60px;
+  }
+
+  .main form .form-row {
+    flex-direction: row;
+  }
+
+  .main form .form-group {
+    margin: 10% 0 10%;
+  }
+
+  .main form{
+    .registration-fieldset{
+      height: 70vh;
+      width: 550px;
+    }
+  }
+
+  .main form {
+    .login-fieldset{
+      height: 400px;
+      width: 400px;
+
+      .form-group{
+        margin: 0 0 0;
+      }
+    }
+  }
+}
