@@ -20,4 +20,4 @@ spring:
 server:
   error:
     include-message: always
-  port: 8095  #set your port
+  port: 8095 #set your port

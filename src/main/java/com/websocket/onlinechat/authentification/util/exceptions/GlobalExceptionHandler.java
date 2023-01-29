@@ -5,19 +5,34 @@ import lombok.Data;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
-
-import java.util.Date;
+import java.util.*;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, WebRequest request) {
+
+        String message = ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
+        String field = ex.getBindingResult().getFieldErrors().get(0).getField();
+
+        FieldExceptionDetails errorDetails =
+                new FieldExceptionDetails(new Date(), message, request.getDescription(false), field);
+        return new ResponseEntity<>(errorDetails, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(EmailAlreadyTakenException.class)
     protected ResponseEntity<?> handleEmailAlreadyTakenException(EmailAlreadyTakenException ex, WebRequest request) {
-        ExceptionDetails errorDetails =
-                new ExceptionDetails(new Date(), ex.getMessage(), request.getDescription(false));
+
+        System.err.println(request);
+        String field = "email";
+        FieldExceptionDetails errorDetails =
+                new FieldExceptionDetails(new Date(), ex.getMessage(), request.getDescription(false), field);
+
         return new ResponseEntity<>(errorDetails, new HttpHeaders(), HttpStatus.NOT_FOUND);
     }
 
@@ -35,8 +50,19 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDetails, new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(NicknameIsTheSameException.class)
-    protected ResponseEntity<?> handleNicknameIsTheSameException(NicknameIsTheSameException ex, WebRequest request) {
+    @ExceptionHandler(NicknameChangeException.class)
+    protected ResponseEntity<?> handleNicknameChangeException(NicknameChangeException ex, WebRequest request) {
+//        ExceptionDetails errorDetails =
+//                new ExceptionDetails(new Date(), ex.getMessage(), request.getDescription(false));
+
+        String field = "nickname";
+        FieldExceptionDetails errorDetails =
+                new FieldExceptionDetails(new Date(), ex.getMessage(), request.getDescription(false), field);
+        return new ResponseEntity<>(errorDetails, new HttpHeaders(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ChatUserValidationException.class)
+    protected ResponseEntity<?> handleChatUserValidationException(ChatUserValidationException ex, WebRequest request) {
         ExceptionDetails errorDetails =
                 new ExceptionDetails(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, new HttpHeaders(), HttpStatus.BAD_REQUEST);

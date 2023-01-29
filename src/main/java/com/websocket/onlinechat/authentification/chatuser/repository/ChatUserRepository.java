@@ -13,4 +13,6 @@ public interface ChatUserRepository extends JpaRepository<ChatUser, Long> {
 
     Optional<ChatUser> findChatUserByEmailAndEnabled (String email, Boolean enabled);
 
+    Optional<ChatUser> findChatUserByNickname(String nickname);
+
 }

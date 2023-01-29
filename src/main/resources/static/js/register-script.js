@@ -1,21 +1,37 @@
 'use strict'
 
+const passwordMatch = (plainFormData) => {
+    return plainFormData.password === plainFormData.confirm_password
+}
+
+function failedFieldStyleHandler(field) {
+    $("#" + field).addClass("redBorderFieldError");
+}
+
 async function handleRegistrationFormSubmit(event) {
 
     event.preventDefault();
 
     let form = event.currentTarget;
     let url = form.action;
-
-    await doRegistrationRequest(form, url);
-}
-
-async function doRegistrationRequest(form, url) {
-
-    let notification;
     let formData = new FormData(form);
     let plainFormData = Object.fromEntries(formData.entries());
-    let formDataJsonString = JSON.stringify(plainFormData);
+
+    $(".form-field").removeClass("redBorderFieldError");
+
+    if (passwordMatch(plainFormData)) {
+        let formDataJsonString = JSON.stringify(plainFormData);
+        await doRegistrationRequest(form, url, formDataJsonString);
+    } else {
+        let notification = createNotification("Password match is failed", "fail-notification")
+        addNotification(notification);
+        failedFieldStyleHandler("confirm_password");
+    }
+}
+
+async function doRegistrationRequest(form, url, formDataJsonString) {
+
+    let notification;
 
     let fetchOptions = {
         method: "POST",
@@ -31,12 +47,13 @@ async function doRegistrationRequest(form, url) {
     if (res.ok) {
         notification = createNotification("Thank you. Your email is waiting for confirmation", "success-notification")
         addNotification(notification);
-
+        $(form)[0].reset();
     } else {
         let response = res.json()
         response.then((data) => {
             notification = createNotification(data.message, "fail-notification")
             addNotification(notification);
+            if (data.field) failedFieldStyleHandler(data.field)
         })
     }
 }

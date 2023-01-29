@@ -113,20 +113,51 @@ header {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  @include displayFlex(row, center, flex-start);
+  @include displayFlex(row, space-between, flex-start);
   height: 70vh;
 
   .chats-list-controls{
     width: 20%;
-    height: 100%;
+    max-height: 100%;
     @include displayFlex(column, center, center);
     background-color: rgb(46 51 78);
     margin-right: 15px;
     border-radius: 15px;
-    padding: 0 10px;
+    padding: 10px 10px;
+    position: relative;
+    transition: 1s;
 
     .form-contacts{
       margin: 5px 0;
+    }
+
+    .contact-connections-container{
+      @include displayFlex(column, center, center); overflow-y: hidden;
+    }
+
+    .button-show-hide{
+      display: none;
+      padding: 10px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      color: transparent;
+      text-shadow: 0 0 0 #abbaff;
+      text-align: center;
+      font-size: 20px;
+
+      &:focus{
+        transform: scale(1.2);
+        color: transparent;
+        text-shadow: 0 0 0 rgba(171, 186, 255, 0.71);
+      }
+    }
+
+    @media only screen and (max-width: 919px) {
+      .button-show-hide{
+        display: block;
+      }
     }
 
   }
@@ -351,7 +382,7 @@ display: flex;
     align-items: flex-start;
 
     .chats-list-controls{
-      height: 100%;
+      max-height: 100%;
       width: 20%;
       margin-right: 15px;
     }
@@ -399,7 +430,8 @@ display: flex;
     align-items: center;
 
     .chats-list-controls{
-      height: auto;
+      max-height: 160px;
+      height: 160px;
       width: 100%;
       margin-right: 0;
     }
@@ -449,7 +481,8 @@ display: flex;
     align-items: center;
 
     .chats-list-controls{
-      height: auto;
+      max-height: 160px;
+      height: 160px;
       width: 100%;
       margin-right: 0;
     }
@@ -499,7 +532,8 @@ display: flex;
     align-items: center;
 
     .chats-list-controls{
-      height: auto;
+      max-height: 160px;
+      height: 160px;
       width: 100%;
       margin-right: 0;
     }
