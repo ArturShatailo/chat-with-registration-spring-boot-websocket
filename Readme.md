@@ -41,7 +41,7 @@ to change its nickname at any time. Also, on the dashboard page the chat window 
 Each new connected user will be displayed in the chat window, also, the event message will be sent when any user is disconnecting. 
 When user disconnects from the chat, messages from another user will not be received anymore. 
 Message sending process is provided by SockJS with STOMP (simple text oriented message protocol) and backend configured WebSocketMessageBroker.</p>
-<p>The application can be tested using the link to AWS: <a href="http://chat-mate.us-east-1.elasticbeanstalk.com/">ChatMate</a></p>
+<p>The application can be tested using the link to Heroku app: <a href="https://chat-mate.herokuapp.com/">ChatMate</a></p>
 
 <div style="padding: 10px 0"></div> <!--spacing 20px-->
 
