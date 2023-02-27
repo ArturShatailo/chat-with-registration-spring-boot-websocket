@@ -3,10 +3,9 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-
-    url: jdbc:postgresql://localhost:5432/chat_registration #${DATABASE_LINK}
-    username: postgres #${DATABASE_USERNAME}
-    password: Postgresql #${DATABASE_PASSWORD}
+    url: ${DATABASE_LINK}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
   # JPA properties
   jpa:
     hibernate:
@@ -24,5 +23,5 @@ server:
   port: 8095  #5000 #set your port
 
 email:
-  user: support@powerfulpanda.tech #${EMAIL_USER}
-  password: DEW#rf3EFWf4$$##fre3242 #${EMAIL_PASSWORD}
+  user: ${EMAIL_USER}
+  password: ${EMAIL_PASSWORD}
