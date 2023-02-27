@@ -75,7 +75,7 @@ Message sending process is provided by SockJS with STOMP (simple text oriented m
         <p>Maven</p>
     </li>
     <li>
-        <p>Deployed to AWS</p>
+        <p>Deployed to AWS (redeployed to Heroku on Feb 2023)</p>
     </li>
     <!--<li>
         <p>JUnit and Mockito</p>
@@ -86,6 +86,7 @@ Message sending process is provided by SockJS with STOMP (simple text oriented m
 <div style="padding: 10px 0"></div> <!--spacing 20px-->
 
 <h2 id="demonstration">Demonstration</h2>
+<a href="https://chat-mate.herokuapp.com/">Heroku deploy</a>
 <ul>
     <li>
         <p>LOGIN <b>http://localhost:8095/login</b></p>
