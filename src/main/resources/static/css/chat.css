@@ -155,11 +155,6 @@ header .logo-tab img {
   text-align: center;
   font-size: 20px;
 }
-.chat-main-container .chats-list-controls .button-show-hide:focus {
-  transform: scale(1.2);
-  color: transparent;
-  text-shadow: 0 0 0 rgba(171, 186, 255, 0.71);
-}
 @media only screen and (max-width: 919px) {
   .chat-main-container .chats-list-controls .button-show-hide {
     display: block;

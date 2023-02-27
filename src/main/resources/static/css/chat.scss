@@ -146,12 +146,6 @@ header {
       text-shadow: 0 0 0 #abbaff;
       text-align: center;
       font-size: 20px;
-
-      &:focus{
-        transform: scale(1.2);
-        color: transparent;
-        text-shadow: 0 0 0 rgba(171, 186, 255, 0.71);
-      }
     }
 
     @media only screen and (max-width: 919px) {
