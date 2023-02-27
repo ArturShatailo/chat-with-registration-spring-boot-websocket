@@ -3,9 +3,10 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/chat_registration
-    username: postgres #postgres
-    password: Postgresql
+
+    url: ${DATABASE_LINK}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
   # JPA properties
   jpa:
     hibernate:
@@ -20,4 +21,8 @@ spring:
 server:
   error:
     include-message: always
-  port: 8095 #set your port
+  port: 8095  #5000 #set your port
+
+email:
+  user: ${EMAIL_USER}
+  password: ${EMAIL_PASSWORD}

@@ -131,6 +131,22 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.7</version>
+                <configuration>
+                    <includeTarget>false</includeTarget>
+                    <includes>
+                        <include>target/onlineChat-0.0.1-SNAPSHOT.jar</include>
+                    </includes>
+                    <processTypes>
+                        <web>java -jar target/onlineChat-0.0.1-SNAPSHOT.jar</web>
+                    </processTypes>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
