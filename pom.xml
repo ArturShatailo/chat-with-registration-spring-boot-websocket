@@ -131,7 +131,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
@@ -154,7 +154,7 @@
                         <web>java -jar target/onlineChat-0.0.1-SNAPSHOT.jar</web>
                     </processTypes>
                 </configuration>
-            </plugin>
+            </plugin>-->
 
         </plugins>
     </build>
