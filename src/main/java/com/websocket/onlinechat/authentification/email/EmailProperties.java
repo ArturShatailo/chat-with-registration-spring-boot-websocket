@@ -23,7 +23,7 @@ public class EmailProperties {
 
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "mail.adm.tools");
-        prop.put("mail.smtp.port", "465"); //no ssl port 2525, use 465 for ssl
+        prop.put("mail.smtp.port", "2525"); //no ssl port 2525, use 465 for ssl
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true"); //TLS
 
